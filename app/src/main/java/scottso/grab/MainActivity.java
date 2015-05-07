@@ -32,12 +32,9 @@ public class MainActivity extends ActionBarActivity {
         loginBtn = (LoginButton) findViewById(R.id.login_button);
     }
 
-
-
     @Override
     protected void onResume() {
-        super.onResume();
-
+            super.onResume();
         // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);
     }
