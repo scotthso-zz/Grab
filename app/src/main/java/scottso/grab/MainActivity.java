@@ -1,22 +1,14 @@
 package scottso.grab;
 
-import android.provider.SyncStateContract;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.widget.LoginButton;
-import com.parse.LogInCallback;
 import com.parse.Parse;
-
-import com.parse.ParseException;
-
-import com.parse.ParseUser;
-
-import java.util.Arrays;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -25,18 +17,19 @@ public class MainActivity extends ActionBarActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // This has to be called before using anything Facebook related (in this case we want to use
+        // it for the button in the layout.
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.activity_main);
 
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "rImfNv4tT49YDypqeW0EBVwwES7b8GBIeeilMjsi", "HUbrGgOnHXM3DpWo2aHJ8AGZUyHOhFOPokyEoLNJ");
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
 
         loginBtn = (LoginButton) findViewById(R.id.login_button);
-
-
-
     }
 
 
